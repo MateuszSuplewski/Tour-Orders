@@ -2,10 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    background: rgb(53,89,177);
+    background: radial-gradient(circle, rgba(53,89,177,1) 0%, rgba(66,58,158,1) 0%, rgba(56,125,187,1) 0%, rgba(115,187,252,1) 97%);
 }
 
 ul {
     list-style: none;
+}
+
+.panel__order li{
+    color: red;
 }
 
 .panel {
@@ -25,25 +35,125 @@ ul {
 }
 
 .excursions__item {
-    border: 1px solid #bbb;
+    background-color: #f8f8f8b9;
     border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
+    box-shadow: 0px 0px 20px -7px rgba(66, 68, 90, 1); 
+    display: flex;
+    flex-wrap: wrap;
     width: calc(50% - 20px);
+    height: 500px;
+    margin: 10px;
+    padding: 20px; 
 }
 
 .panel__form {
-    background-color: #f4f4f4;
-    padding: 20px;
-    width: 30%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px -7px rgba(66, 68, 90, 1); 
+    width: 30%; 
+    padding: 20px; 
 }
 
 .uploader, .order {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid rgba(153, 199, 238, 0.74);;
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
 
 .excursions__item--prototype, .summary__item--prototype{
     display: none;
+}
+
+.excursions__field-input,.order__field-input{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    outline: none;
+    min-width: 150px;
+    min-height: 30px; 
+}
+
+input[type="text"]{
+    background-color: white;
+}
+
+.order__field-submit{
+    color: rgb(8, 105, 189);
+    background-color:rgba(153, 199, 238, 0.74);
+    border: none;
+    font-weight: bold;
+    width: 100%;
+    margin: 10px 0;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.order__field-submit:hover{
+    background-color:rgba(18, 113, 197, 0.74);
+    color: white;
+}
+
+.summary__btn-remove{
+    color: #d11c1c;
+    text-decoration: none;
+    float: right;
+}
+
+.excursions__description{
+    padding: 10px 0;
+}
+
+.excursions__title{
+    text-align: center;
+}
+
+.excursions__field,.order__field,.summary__item,.uploader__input ,li,.excursions__field-input,.order__field-input{
+    padding: 5px 0;
+}
+
+
+.excursions__form{
+    align-self: flex-end;
+    width: 100%;
+}
+
+.excursions__field-input--submit{
+    color: rgb(255, 255, 255);
+    background-color: rgba(31, 173, 55, 0.719);
+    border: none;
+    float: right;
+    font-weight: bold;
+    margin-top: 5px;
+    min-height: 35px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.excursions__field-input--submit:hover{
+    background-color: white;
+    color: rgba(31, 173, 55, 0.719);
+}
+
+.uploader__input {
+    color:rgba(18, 113, 197, 0.74);
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.uploader__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+    color: rgb(190, 215, 226);
+    background-color: rgb(57, 93, 170);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.uploader__label:focus, .uploader__label:hover {
+    background-color: white
 }
