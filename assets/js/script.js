@@ -91,17 +91,6 @@ function removeExcursionFromCart(e) {
 }
 
 
-function updateTotalPrice() {
-    const summaryEl = document.querySelector('.summary');
-    const summaryPrices = summaryEl.querySelectorAll('.summary__total-price')
-    const totalPriceEl = document.querySelector('.order__total-price-value'); // Change total price while adding new excursion
-    let totalPrice = 0;
-    summaryPrices.forEach((price) => { // Add every excursion price inside cart
-        totalPrice += Number(price.innerText.replace('PLN', ''));
-    });
-    totalPrice += 'PLN';
-    totalPriceEl.innerText = totalPrice;
-}
 
 
 function handleForm(e) {
@@ -118,7 +107,10 @@ function handleForm(e) {
     if (!nameAndLastName.match(nameAndLastNamePattern)) errors.push('Wypełnij pole imie i nazwisko poprawnie');
     if (!email.match(emailPattern)) errors.push('Wprowadź poprawny adres email');
 
-    if (errors.length === 0) alert(`Dziękujemy za złożenie zamówienia o wartości ${totalPrice}. Szczegóły zamówienia zostały wysłane na adres e-mail: ${email}`);
+    if (errors.length === 0) {
+        alert(`Dziękujemy za złożenie zamówienia o wartości ${totalPrice}. Szczegóły zamówienia zostały wysłane na adres e-mail: ${email}`);
+        clearAll();
+    }
     else {
         let ul = e.target.querySelector('ul');
 
@@ -142,4 +134,31 @@ function handleForm(e) {
     }
 }
 
+function clearAll() {
+    const inputElements = document.querySelectorAll('input[name]');
+    console.log(inputElements);
+    const addedExcursions = document.querySelectorAll('.summary__item');
+
+    inputElements.forEach((input) => {
+        input.value = null;
+    });
+    addedExcursions.forEach((excursion) => {
+        if (!excursion.classList.contains('summary__item--prototype')) {
+            excursion.remove();
+        }
+    });
+    updateTotalPrice();
+}
+
+function updateTotalPrice() {
+    const summaryEl = document.querySelector('.summary');
+    const summaryPrices = summaryEl.querySelectorAll('.summary__total-price')
+    const totalPriceEl = document.querySelector('.order__total-price-value'); // Change total price while adding new excursion
+    let totalPrice = 0;
+    summaryPrices.forEach((price) => { // Add every excursion price inside cart
+        totalPrice += Number(price.innerText.replace('PLN', ''));
+    });
+    totalPrice += 'PLN';
+    totalPriceEl.innerText = totalPrice;
+}
 
